@@ -14,26 +14,35 @@ var Manowar = (function() {
   ) {
 
     let h1 = 2 * height;
-    let rr = radiusLo + radiusHi;
-
-    let cub0 = Manifold.cube([ rr, rr, h1 ], true)
-      .translate([ rr / 2, rr / 2, 0 ]);
-    let cub1 = Manifold.cube([ rr, rr, h1 ], true)
-      .translate([ rr / 2, - rr / 2, 0 ]);
-    let cub2 = Manifold.cube([ rr, rr, h1 ], true)
-      .translate([ - rr / 2, - rr / 2, 0 ]);
+    let rr = Math.max(radiusLo, radiusHi);
 
     let cyl = Manifold.cylinder(
       height, radiusLo, radiusHi, circularSegments, center);
 
-    let cub = cub0.add(cub1).add(cub2);
+    let cub = Manifold.cube([ rr, rr, h1 ], true)
+      .translate([ rr / 2, rr / 2, 0 ]);
+    let qua = Manifold.intersection(cyl, cub);
 
-    return Manifold.intersection(cub, cyl);
+    let sli = angle % 90;
+    let ang = angle - sli;
+
+    let pieces = [];
+
+    let a = 0;
+    for (; a < ang; a += 90) {
+      pieces.push(qua.rotate([ 0, 0, a ]));
+    }
+    if (sli > 0) {
+      let slc = qua.subtract(cub.rotate([ 0, 0, sli ]));
+      pieces.push(slc.rotate([ 0, 0, a ]));
+    }
+
+    return Manifold.union(pieces);
   };
 
   // public
 
-  this.slice = slice;
+  this.slicedCylinder = slicedCylinder;
 
   return this;
 
