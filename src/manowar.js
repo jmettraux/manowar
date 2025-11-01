@@ -9,7 +9,7 @@ var Manowar = (function() {
 
   // protected
 
-  let slice = function(
+  let slicedCylinder = function(
     height, radiusLo, radiusHi, angle, circularSegments, center
   ) {
 
