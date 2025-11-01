@@ -13,8 +13,8 @@ var Manowar = (function() {
     height, radiusLo, radiusHi, angle, circularSegments, center
   ) {
 
-    let h1 = 2 * height;
-    let rr = Math.max(radiusLo, radiusHi);
+    let h1 = 1.5 * height;
+    let rr = Math.max(radiusLo, radiusHi) + 0.2;
 
     let cyl = Manifold.cylinder(
       height, radiusLo, radiusHi, circularSegments, center);
