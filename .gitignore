@@ -1,0 +1,9 @@
+
+*.swp
+.vim*
+
+.chat.md
+.deep.md
+.openai.*
+.deepseek.*
+
