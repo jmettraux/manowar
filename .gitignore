@@ -2,6 +2,8 @@
 *.swp
 .vim*
 
+pkg/manowar.js
+
 .chat.md
 .deep.md
 .openai.*
