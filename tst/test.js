@@ -5,12 +5,24 @@
 //  .slicedCylinder(10, 42, 35, 180 + 20, 8, true);
 //export default result;
 
-let ps = [ [ 0, 0, 0 ], [ 70, 10, 0 ], [ 60, 20, 0 ], [ 100, 100, 10 ] ];
-let ps1 = Manowar.bezierPoints(ps, 10);
+//let ps = [ [ 0, 0, 0 ], [ 70, 10, 0 ], [ 60, 20, 0 ], [ 100, 100, 10 ] ];
+//let ps1 = Manowar.bezierPoints(ps, 10);
+//
+//export default Manifold.union(
+//  ps1.map(function(p, i) {
+//    //console.log(`${i} > ${JSON.stringify(p)}`);
+//    return Manifold.cylinder(5, 2, 2, 6, true).translate(p);
+//  }));
 
-export default Manifold.union(
+let ps = [ [ 0, 0, 0 ], [ 70, 10, 10 ], [ 60, 20, 0 ], [ 100, 100, 40 ] ];
+let ps1 = Manowar.bezierPoints(ps, 5);
+
+//export default Manifold.union(
+//  Manowar.chainedHulls(
+//    ps1.map(function(p, i) {
+//      return Manifold.sphere(2, 36, true).translate(p); })));
+
+export default Manowar.chainedHull(
   ps1.map(function(p, i) {
-    //console.log(`${i} > ${JSON.stringify(p)}`);
-    return Manifold.cylinder(5, 2, 2, 6, true).translate(p);
-  }));
+    return Manifold.sphere(2, 36, true).translate(p); }));
 

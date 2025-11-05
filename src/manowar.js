@@ -78,10 +78,31 @@ var Manowar = (function() {
     return a;
   };
 
+  let chainedHulls = function(elts) {
+
+    let r = [];
+    for (let i = 0, l = elts.length - 1; i < l; i++) {
+      r.push(Manifold.hull([ elts[i], elts[i + 1] ]));
+    }
+
+    return r;
+  };
+
+  let chainedHull = function(elts) {
+
+    return Manifold.union(chainedHulls(elts));
+  };
+
   // public
 
   this.slicedCylinder = slicedCylinder;
+
   this.bezierPoints = bezierPoints;
+
+  this.chainedHulls = chainedHulls;
+  this.chainedHull = chainedHull;
+
+  // done.
 
   return this;
 
