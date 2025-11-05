@@ -40,30 +40,6 @@ var Manowar = (function() {
     return Manifold.union(pieces);
   };
 
-  // from cadence.scad
-  //
-  // // inspiration:
-  // // https://climberg.de/post/openscad_bezier_curves_of_any_degrees
-  //
-  // function _bezier_choose(n, k) =
-  //   k == 0 ?  1 : (n * _bezier_choose(n - 1, k - 1)) / k;
-  //
-  // function _bezier_point(points, t, i, c) =
-  //   len(points) == i ?
-  //     c :
-  //     _bezier_point(
-  //       points,
-  //       t,
-  //       i + 1,
-  //       c +
-  //         _bezier_choose(len(points) - 1, i) *
-  //         pow(t, i) *
-  //         pow(1 - t, len(points) - i - 1) * points[i]);
-  //
-  // function _bezier_points(control_points, sample_count) =
-  //   [ for (t = [ 0 : 1.0 / sample_count : 1 ])
-  //     _bezier_point(control_points, t, 0, [ 0, 0, 0 ]) ];
-
   let padd = function(pa, pb) { return pa.map((n, i) => n + pb[i]); };
   let pmul = function(factor, p) { return p.map(n => factor * n); };
 
@@ -89,6 +65,9 @@ var Manowar = (function() {
           points[i])));
   };
 
+  // inspiration:
+  // https://climberg.de/post/openscad_bezier_curves_of_any_degrees
+  //
   let bezierPoints = function(controlPoints, sampleCount) {
 
     let a = [];
