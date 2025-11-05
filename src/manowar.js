@@ -82,12 +82,14 @@ var Manowar = (function() {
       i + 1,
       padd(
         c,
-        bezierChoose(pl - 1, i) *
-        Math.pow(t, i) *
-        pmul(Math.pow(1 - t, pl - i - 1), points[i])));
+        pmul(
+          bezierChoose(pl - 1, i) *
+          Math.pow(t, i) *
+          Math.pow(1 - t, pl - i - 1),
+          points[i])));
   };
 
-  let bezierPoints(controlPoints, sampleCount) {
+  let bezierPoints = function(controlPoints, sampleCount) {
 
     let a = [];
     for (let t = 0, d = 1.0 / sampleCount; t <= 1.0; t += d) {
