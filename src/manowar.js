@@ -68,7 +68,7 @@ var Manowar = (function() {
   let pmul = function(factor, p) { return p.map(n => factor * n); };
 
   let bezierChoose = function (n, k) {
-    return k == 0 ? 1 : (n * bezierChoose(n - 1, k -1)) / k;
+    return k === 0 ? 1 : (n * bezierChoose(n - 1, k -1)) / k;
   };
 
   let bezierPoint = function(points, t, i, c) {
