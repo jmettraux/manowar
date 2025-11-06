@@ -45,7 +45,7 @@ var Manowar = (function() {
   let padd = function(pa, pb) { return pa.map((n, i) => n + pb[i]); };
   let pmul = function(factor, p) { return p.map(n => factor * n); };
 
-  let bezierChoose = function (n, k) {
+  let bezierChoose = function(n, k) {
     return k === 0 ? 1 : (n * bezierChoose(n - 1, k -1)) / k;
   };
 
