@@ -5,6 +5,8 @@ var Manowar = (function() {
 
   "use strict";
 
+  this.VERSION = '0.9.0';
+
   let self = this;
 
   // protected
