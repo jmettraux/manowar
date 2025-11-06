@@ -6,5 +6,5 @@ set viminfo+=n./.viminfo
 
 "set runtimepath+=test/vim/
 
-nnoremap <leader>t :!make copy<CR>
+nnoremap <leader>t :!make copy_test_to_clipboard<CR>
 
