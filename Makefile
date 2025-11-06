@@ -16,5 +16,5 @@ package:
 pkg: package
 
 mini:
-	cat src/manowar.js | ruby mak/jsminify.rb
+	cat src/manowar.js | ruby mak/jsminify.rb > pkg/manowar.js
 
