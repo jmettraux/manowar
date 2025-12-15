@@ -62,6 +62,19 @@ let chainedHull =
   function(eltArray) { return Manifold.union(chainedHulls(eltArray)); };
 ```
 
+## `Manowar.radiatedHull(hubManifold, manifoldArray)`
+
+Compounds triangular hulls, radiating from the `hubManifold`, iterating with successive pairs from the `manifoldArray`.
+
+```js
+let ps = [ [ 0, 0, 0 ], [ 70, 10, 10 ], [ 60, 20, 0 ], [ 100, 100, 40 ] ];
+let ps1 = Manowar.bezierPoints(ps, 5);
+
+export default Manowar.radiatedHull(
+  Manifold.sphere(2, 36, true).translate([ 100, 100, 0 ]),
+  ps1.map(function(p) { return Manifold.sphere(2, 36, true).translate(p); }));
+```
+
 
 ## LICENSE
 

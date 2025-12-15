@@ -95,6 +95,17 @@ var Manowar = (function() {
     return Manifold.union(chainedHulls(elts));
   };
 
+  let radiatedHull = function(hubElt, elts) {
+
+    let hulls = [];
+
+    for (let i = 0, l = elts.length - 1; i < l; i++) {
+      hulls.push(Manifold.hull(hubElt, elts[i], elts[i + 1]));
+    }
+
+    return Manifold.union(hulls);
+  };
+
   // public
 
   this.slicedCylinder = slicedCylinder;
@@ -103,6 +114,8 @@ var Manowar = (function() {
 
   this.chainedHulls = chainedHulls;
   this.chainedHull = chainedHull;
+
+  this.radiatedHull = radiatedHull;
 
   // done.
 

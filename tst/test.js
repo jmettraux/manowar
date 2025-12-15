@@ -22,7 +22,15 @@ let ps1 = Manowar.bezierPoints(ps, 5);
 //    ps1.map(function(p, i) {
 //      return Manifold.sphere(2, 36, true).translate(p); })));
 
-export default Manowar.chainedHull(
-  ps1.map(function(p, i) {
-    return Manifold.sphere(2, 36, true).translate(p); }));
+let chainedHull = Manowar.chainedHull(
+  ps1.map(function(p) { return Manifold.sphere(2, 36, true).translate(p); }));
+
+let radiatedHull = Manowar.radiatedHull(
+  Manifold.sphere(2, 36, true).translate([ 100, 100, 0 ]),
+  ps1.map(function(p) { return Manifold.sphere(2, 36, true).translate(p); }))
+    .translate([ 50, 0, 0 ]);
+
+//export default chainedHull;
+//export default radiatedHull;
+export default union(chainedHull, radiatedHull);
 
